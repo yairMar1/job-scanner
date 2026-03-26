@@ -2,7 +2,7 @@ name: Job Scanner
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # Every 2 hours
+    - cron: '0 6,9,12,15 * * 0-4'  # Sun-Thu at 9:00, 12:00, 15:00, 18:00 Israel time
   workflow_dispatch:         # Manual trigger button in GitHub UI
 
 permissions:
