@@ -1,0 +1,54 @@
+goozali_url: "https://airtable.com/appwewqLk7iUY4azc/shrQBuWjXd0YgPqV6/tblnk93ouV3B2ce9b"
+
+filter:
+  max_experience_years: 3
+
+  fields:
+    - "Software Engineering"
+    - "Frontend Development"
+    - "Mobile Development"
+    - "Data Science, ML & Algorithms"
+    - "QA"
+
+  locations:
+    - "Tel Aviv"
+    - "Petach Tikva"
+    - "Herzliya"
+    - "Ramat Gan"
+    - "Ra'anana"
+    - "Netanya"
+    - "Hod Hasharon"
+    - "Rosh HaAyin"
+    - "Holon"
+    - "Givatayim"
+    - "Kfar Saba"
+    - "Bnei Brak"
+    - "Kiryat Ono"
+    - "Rehovot"
+    - "Ramat Hasharon"
+    - "Rishon Lezion"
+    - "Center District"
+    - "Central region"
+    - "Tel Aviv and Center"
+    - "Tel Aviv District"
+    - "Israel - Central"
+    - "Israel - Remote"
+    - "Israel"
+
+  exclude_title_keywords:
+    - "senior"
+    - "lead"
+    - "staff"
+    - "principal"
+    - "manager"
+    - "director"
+    - "vp"
+    - "head of"
+    - "architect"
+
+discord_webhooks:
+  "Software Engineering": "DISCORD_WEBHOOK_SOFTWARE_ENGINEERING"
+  "Frontend Development": "DISCORD_WEBHOOK_FRONTEND"
+  "Mobile Development": "DISCORD_WEBHOOK_MOBILE"
+  "Data Science, ML & Algorithms": "DISCORD_WEBHOOK_DATA_SCIENCE_ML"
+  "QA": "DISCORD_WEBHOOK_QA"
