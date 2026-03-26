@@ -7,7 +7,11 @@ import logging
 import os
 
 import yaml
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None  # Running in CI, env vars set by GitHub Actions
 
 from discord_notifier import notify_jobs
 from goozali_scraper import scrape_goozali_jobs
@@ -23,7 +27,8 @@ def main(limit: int | None = None) -> None:
     Args:
         limit: If set, only send this many jobs (useful for testing).
     """
-    load_dotenv()
+    if load_dotenv:
+        load_dotenv()
 
     with open("config.yaml", encoding="utf-8") as f:
         config = yaml.safe_load(f)
