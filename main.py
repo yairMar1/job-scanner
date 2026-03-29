@@ -13,6 +13,7 @@ try:
 except ImportError:
     load_dotenv = None  # Running in CI, env vars set by GitHub Actions
 
+from career_scraper import scrape_career_pages
 from discord_notifier import notify_jobs
 from goozali_scraper import scrape_goozali_jobs
 from job_filter import filter_jobs
@@ -48,7 +49,15 @@ def main(limit: int | None = None) -> None:
 
     # 1. Scrape
     logger.info("Step 1: Scraping Goozali...")
-    jobs = scrape_goozali_jobs(config["goozali_url"])
+    goozali_jobs = scrape_goozali_jobs(config["goozali_url"])
+
+    logger.info("Step 1b: Scraping career pages...")
+    career_jobs = scrape_career_pages(
+        config.get("companies", []),
+        config.get("department_mapping", {}),
+    )
+    jobs = goozali_jobs + career_jobs
+    logger.info("Total scraped: %d (%d Goozali + %d career pages)", len(jobs), len(goozali_jobs), len(career_jobs))
 
     # 2. Filter
     logger.info("Step 2: Filtering jobs...")

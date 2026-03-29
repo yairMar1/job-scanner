@@ -44,13 +44,17 @@ def filter_jobs(jobs: list[dict], filter_config: dict) -> list[dict]:
         if field not in allowed_fields:
             continue
 
-        # 3. Location check — pass if missing, otherwise at least one must match
+        # 3. Location check — pass if missing, otherwise at least one must match.
+        # Uses substring matching so "Tel Aviv, Israel" matches our "Tel Aviv" entry.
         locations = job.get("Location")
         if locations is not None:
             if isinstance(locations, list):
-                if not any(loc in allowed_locations for loc in locations):
+                if not any(
+                    any(allowed in loc for allowed in allowed_locations)
+                    for loc in locations
+                ):
                     continue
-            elif locations not in allowed_locations:
+            elif not any(allowed in locations for allowed in allowed_locations):
                 continue
 
         # 4. Title exclusion check

@@ -46,6 +46,26 @@ filter:
     - "head of"
     - "architect"
 
+department_mapping:
+  "Engineering": "Software Engineering"
+  "R&D": "Software Engineering"
+  "Backend": "Software Engineering"
+  "Frontend": "Frontend Development"
+  "Mobile": "Mobile Development"
+  "Data Science": "Data Science, ML & Algorithms"
+  "Machine Learning": "Data Science, ML & Algorithms"
+  "QA": "QA"
+  "Quality Assurance": "QA"
+  # Add more mappings as you discover new department names during testing
+
+companies:
+  - name: "ExampleCompany"
+    platform: "greenhouse"
+    token: "exampletoken"
+  - name: "AnotherCompany"
+    platform: "lever"
+    token: "anothertoken"
+
 discord_webhooks:
   "Software Engineering": "DISCORD_WEBHOOK_SOFTWARE_ENGINEERING"
   "Frontend Development": "DISCORD_WEBHOOK_FRONTEND"
