@@ -65,6 +65,10 @@ companies:
   - name: "AnotherCompany"
     platform: "lever"
     token: "anothertoken"
+  - name: "ComeetCompany"
+    platform: "comeet"
+    slug: "companyslug"   # from comeet.com/jobs/{slug}/{uid}
+    uid: "41.00B"         # from comeet.com/jobs/{slug}/{uid}
 
 discord_webhooks:
   "Software Engineering": "DISCORD_WEBHOOK_SOFTWARE_ENGINEERING"
