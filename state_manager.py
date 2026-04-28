@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 STATE_FILE = "state.json"
 
 
-def load_state(path: str = STATE_FILE) -> set[int]:
+def load_state(path: str = STATE_FILE) -> set[int | str]:
     """Read state.json and return the set of already-sent Job IDs.
     
     If the file doesn't exist (first run) or is corrupted, return empty set.
@@ -21,13 +21,13 @@ def load_state(path: str = STATE_FILE) -> set[int]:
         return set()
 
 
-def save_state(sent_ids: set[int], path: str = STATE_FILE) -> None:
+def save_state(sent_ids: set[int | str], path: str = STATE_FILE) -> None:
     """Write the set of sent Job IDs to state.json."""
     with open(path, "w") as f:
         json.dump(list(sent_ids), f, indent=2)
 
 
-def filter_new_jobs(jobs: list[dict], sent_ids: set[int]) -> list[dict]:
+def filter_new_jobs(jobs: list[dict], sent_ids: set[int | str]) -> list[dict]:
     """Return only jobs whose Job ID is NOT in sent_ids."""
     new_jobs = [job for job in jobs if job.get("Job ID") not in sent_ids]
     logger.info("Dedup: %d jobs -> %d new (%d already sent)", len(jobs), len(new_jobs), len(jobs) - len(new_jobs))

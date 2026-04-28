@@ -27,7 +27,7 @@ Five modules, each handling one concern:
 
 - **`goozali_scraper.py`** — Reverse-engineers Airtable's internal API by fetching the shared view HTML, extracting API URL + headers via regex, calling `readSharedViewData`, and parsing column IDs to human-readable names. Requires an HTTP Session for cookie persistence.
 - **`job_filter.py`** — Applies 5 sequential checks: max experience, allowed fields, allowed locations, excluded title keywords, and requirements text experience regex. A job must pass all 5 to be included.
-- **`state_manager.py`** — Tracks sent Job IDs as a `set[int]` persisted in `state.json`. Used for deduplication between runs.
+- **`state_manager.py`** — Tracks sent Job IDs as a `set[int | str]` persisted in `state.json` (Goozali IDs are ints, career-scraped IDs are prefixed strings like `gh-12345`). Used for deduplication between runs.
 - **`discord_notifier.py`** — Builds Discord embeds and routes each job to a field-specific webhook. Handles 429 rate limiting with retry.
 - **`main.py`** — Orchestrator. Wires all modules, loads config, builds webhook map from env vars.
 
